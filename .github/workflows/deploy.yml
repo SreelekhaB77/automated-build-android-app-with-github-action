@@ -42,4 +42,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'  # Replace with your AWS region
       run: |
-        aws s3 cp ${{ github.workspace }}/app/build/outputs/apk/release/app-release.apk s3://apkbucket1/android-apks/ --acl public-read
+        aws s3 cp ${{ github.workspace }}/app/build/outputs/apk/release/github-action-automated[2.2.5]-release.apk s3://apkbucket1/android-apks/ --acl public-read
