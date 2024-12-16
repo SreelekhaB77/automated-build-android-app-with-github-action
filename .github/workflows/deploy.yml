@@ -1,0 +1,30 @@
+name: Build and Deploy APK to S3
+
+on:
+  push:
+    branches:
+      - master  # Trigger deployment on push to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code from repository
+      uses: actions/checkout@v3
+
+    
+    - name: Build APK using Gradle
+      run: |
+        ./gradlew assembleRelease
+
+    - name: Upload APK to S3
+      uses: jakejarvis/s3-sync-action@v0.5.3
+      with:
+        args: --acl public-read
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'us-east-1'  # Replace with your region
+        SOURCE_DIR: './app/build/outputs/apk/release'
+        DEST_DIR: 's3://apkbucket1/android-apks/'
