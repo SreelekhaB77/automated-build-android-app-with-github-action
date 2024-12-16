@@ -18,8 +18,7 @@ jobs:
 
     - name: Build APK
       run: |
-        cd /home/ubuntu/project/automated-build-android-app-with-github-action  # Replace with your project's path
-        ./gradlew assembleRelease
+        cd /home/runner/work/automated-build-android-app-with-github-action/automated-build-android-app-with-github-action./gradlew assembleRelease
 
     - name: Install AWS CLI
       run: |
