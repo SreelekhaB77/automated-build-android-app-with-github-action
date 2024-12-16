@@ -37,8 +37,11 @@ jobs:
         sudo apt-get install -y awscli
     - name: Rename APK File
       run: |
-       mv ${{ github.workspace }}/app/build/outputs/apk/release/github-action-automated[2.2.5]-release.apk \
-       ${{ github.workspace }}/app/build/outputs/apk/release/app-release.apk
+       - name: Move APK file
+       run: |
+           mv "/home/runner/work/automated-build-android-app-with-github-action/automated-build-android-app-with-github-action/app/build/outputs/apk/release/github-action-automated[2.2.5]-release.apk" \
+             "/home/runner/work/_temp/github-action-automated[2.2.5]-release.apk"
+
 
        - name: Upload APK to S3
       env:
