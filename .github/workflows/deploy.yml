@@ -59,4 +59,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-1
         run: |
-          aws s3 cp "$PWD/github-action-automated2.2.5-release.apk" s3://apkbucket1/android-apks/ --acl public-read --region $AWS_REGION
+          aws s3 cp "$$APK_PATH/github-action-automated2.2.5-release.apk" s3://apkbucket1/android-apks/ --acl public-read --region $AWS_REGION
