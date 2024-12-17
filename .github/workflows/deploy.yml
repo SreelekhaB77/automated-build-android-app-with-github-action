@@ -42,6 +42,11 @@ jobs:
       - name: Check current directory
         run: |
          echo "Current directory: $PWD"
+      - name: Debug Directory
+        run: ls -l $PWD
+      - name: Debug All Files
+        run: find $PWD
+
 
 
       - name: Upload APK to S3
