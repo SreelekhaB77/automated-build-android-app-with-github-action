@@ -46,6 +46,10 @@ jobs:
         run: ls -l $PWD
       - name: Debug All Files
         run: find $PWD
+      - name: Find APK
+        run: |
+         APK_PATH=$(find $PWD -name "*.apk" | head -n 1)
+         echo "APK_PATH=$APK_PATH" >> $GITHUB_ENV
 
 
 
