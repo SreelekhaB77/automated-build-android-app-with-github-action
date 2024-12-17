@@ -35,7 +35,7 @@ jobs:
       - name: Move APK file
         run: |
           mv "/home/runner/work/automated-build-android-app-with-github-action/automated-build-android-app-with-github-action/app/build/outputs/apk/release/github-action-automated[2.2.5]-release.apk" \
-          "/home/runner/work/_temp/github-action-automated[2.2.5]-release.apk"
+          "/home/runner/work/_temp/github-action-automated-release.apk"
 
       - name: Upload APK to S3
         env:
@@ -43,5 +43,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-1
         run: |
-          aws s3 cp "/home/runner/work/_temp/github-action-automated[2.2.5]-release.apk" \
+          aws s3 cp "/home/runner/work/_temp/github-action-automated-release.apk" \
           s3://apkbucket1/android-apks/ --acl public-read --region $AWS_REGION
