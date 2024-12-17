@@ -36,6 +36,13 @@ jobs:
         run: |
           mv "/home/runner/work/automated-build-android-app-with-github-action/automated-build-android-app-with-github-action/app/build/outputs/apk/release/github-action-automated[2.2.5]-release.apk" \
           "/home/runner/work/_temp/github-action-automated-release.apk"
+      - name: Debug AWS Environment Variables
+        run: |
+         echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
+         echo "AWS_REGION: $AWS_REGION"
+        env:
+           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           AWS_REGION: 'us-east-1'
 
       - name: Upload APK to S3
         env:
